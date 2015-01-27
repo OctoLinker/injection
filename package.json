@@ -1,0 +1,41 @@
+{
+  "name": "github-injection",
+  "description": "",
+  "version": "0.0.1",
+  "homepage": "https://github.com/github-linker/injection",
+  "bugs": "https://github.com/github-linker/injection/issues",
+  "license": "MIT",
+  "main": "index.js",
+  "author": {
+    "name": "Stefan Buck",
+    "email": "github@stefanbuck.com",
+    "url": "http://stefanbuck.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/github-linker/injection"
+  },
+  "keywords": [],
+  "dependencies": {},
+  "devDependencies": {
+    "coveralls": "^2.11.1",
+    "gulp": "^3.8.8",
+    "gulp-bump": "^0.1.11",
+    "gulp-istanbul": "^0.3.0",
+    "gulp-jscs": "^1.1.2",
+    "gulp-jshint": "^1.8.4",
+    "gulp-load-plugins": "^0.6.0",
+    "gulp-mocha": "^1.1.0",
+    "gulp-plumber": "^0.6.5",
+    "gulp-util": "^3.0.1",
+    "jquery": "^2.1.3",
+    "jsdom": "^3.1.0",
+    "jshint-stylish": "^0.4.0",
+    "should": "^4.0.4"
+  },
+  "scripts": {
+    "test": "npm run test-local && npm run test-remote && cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
+     "test-local": "gulp test",
+     "test-remote": "TEST_ENV='remote' gulp test"
+  }
+}
