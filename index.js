@@ -21,7 +21,7 @@ function debounce(func, wait, immediate) {
   };
 }
 
-module.exports = function (global, options, cb) {
+var gitHubInjection = function (global, options, cb) {
   if (!global) {
     throw new Error('Missing argument global');
   }
@@ -56,3 +56,17 @@ module.exports = function (global, options, cb) {
 
   cb(null);
 };
+
+// Export the gitHubInjection function for **Node.js**, with
+// backwards-compatibility for the old `require()` API. If we're in
+// the browser, add `gitHubInjection` as a global object.
+if (typeof exports !== 'undefined') {
+  if (typeof module !== 'undefined' && module.exports) {
+    exports = module.exports = gitHubInjection;
+  }
+  exports.gitHubInjection = gitHubInjection;
+} else {
+  /*jshint -W040 */
+  this.gitHubInjection = gitHubInjection;
+  /*jshint +W040 */
+}
