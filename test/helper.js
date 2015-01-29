@@ -40,7 +40,7 @@ module.exports = function(file, url, done) {
       window.document.location.href = url;
     }
 
-    injection(window, {}, function(err, result) {
+    injection(window, function(err, result) {
       if (err) {
         throw err;
       }

@@ -25,8 +25,19 @@ var gitHubInjection = function (global, options, cb) {
   if (!global) {
     throw new Error('Missing argument global');
   }
-  if (!global.document || !global.document.location) {
-    throw new Error('Global is not from type window');
+  if (!global.document || !global.document.getElementById) {
+    throw new Error('The given argument global is not a valid window object');
+  }
+
+  if (!cb) {
+    cb = options;
+    options = {};
+  } else if (typeof cb !== 'function') {
+    throw new Error('Callback is not a function');
+  }
+
+  if (!cb) {
+    throw new Error('Missing argument callback');
   }
 
   options = options || {};
