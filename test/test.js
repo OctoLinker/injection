@@ -46,15 +46,17 @@ describe('GitHub-Injection', function() {
     before(function(done) {
       this.$ = this.result = null;
 
-      helper('repo_browser.html', '/', function(_jquery, _result) {
-        this.$ = _jquery;
-        this.result = _result;
+      helper('repo_browser.html', '/', function(err, window) {
+        if (err) {
+          return done(err);
+        }
+        this.window = window;
         done();
       }.bind(this));
     });
 
     it('ajax container is present', function() {
-      this.$('#js-repo-pjax-container').length.should.equal(1);
+      assert.notEqual(this.window.document.getElementById('js-repo-pjax-container'), null);
     });
   });
 

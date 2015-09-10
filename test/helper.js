@@ -1,13 +1,13 @@
+'use strict';
 
 var util = require('util');
 var fs = require('fs');
 var path = require('path');
 var env = require('jsdom').env;
-var injection = require('..');
 
 module.exports = function(file, url, done) {
-  var $, content, baseUrl, filePath;
-  baseUrl = 'https://github.com/github-linker/core/';
+  var content, baseUrl, filePath;
+  baseUrl = 'https://github.com/github-linker/injection/';
 
   if (typeof url === 'function') {
     done = url;
@@ -30,7 +30,6 @@ module.exports = function(file, url, done) {
     if (err) {
       return done(err);
     }
-    $ = require('jquery')(window);
 
     if (process.env.TEST_ENV !== 'remote') {
       window.document.location.href = url;
@@ -40,11 +39,6 @@ module.exports = function(file, url, done) {
       window.document.location.href = url;
     }
 
-    injection(window, function(err, result) {
-      if (err) {
-        throw err;
-      }
-      done($, result);
-    });
+    done(null, window);
   });
 };
