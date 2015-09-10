@@ -1,6 +1,6 @@
 'use strict';
 
-require('should');
+var assert = require('assert');
 var helper = require('./helper');
 var injection = require('..');
 
@@ -15,27 +15,27 @@ describe('GitHub-Injection', function() {
   describe('constructor', function() {
 
     it('require a window argument', function () {
-      injection.bind(null).should.throw('Missing argument global');
+      assert.throws(injection.bind(null), 'Missing argument global');
     });
 
     it('require a callback argument', function () {
-      injection.bind(null, fakeWindow).should.throw('Missing argument callback');
+      assert.throws(injection.bind(null, fakeWindow), 'Missing argument callback');
     });
 
     it('callback is not a function', function () {
-      injection.bind(null, fakeWindow, {}, {}).should.throw('Callback is not a function');
+      assert.throws(injection.bind(null, fakeWindow, {}, {}), 'Callback is not a function');
     });
 
     it('window parameter is not valid', function () {
-      injection.bind(null, {}).should.throw('The given argument global is not a valid window object');
+      assert.throws(injection.bind(null, {}), 'The given argument global is not a valid window object');
     });
 
     it('accept a callback argument', function (done) {
-      injection.bind(null, fakeWindow, done).should.not.throw();
+      assert.doesNotThrow(injection.bind(null, fakeWindow, done));
     });
 
     it('accept a options and callback argument', function (done) {
-      injection.bind(null, fakeWindow, {}, done).should.not.throw();
+      assert.doesNotThrow(injection.bind(null, fakeWindow, {}, done));
     });
   });
 
