@@ -7,7 +7,7 @@ var env = require('jsdom').env;
 
 module.exports = function(file, url, done) {
   var content, baseUrl, filePath;
-  baseUrl = 'https://github.com/github-linker/injection/';
+  baseUrl = 'https://github.com/octo-linker/injection/';
 
   if (typeof url === 'function') {
     done = url;

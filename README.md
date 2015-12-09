@@ -9,7 +9,7 @@ GitHub.com is a huge web app with millions of visitors every day. To reduce the 
 
 The Github-Injection registers a listener to the dom which detects dom changes. If a significant dom node changed his content, the callback will be executed and you can reinitialize your extension. For simplicity the callback is also executed on the first script execution.
 
-A sample implementation can be found in the [GitHub-Linker-Core](https://github.com/github-linker/core/blob/4a30c6606465e294d1ae1c9ca394ba03368928f7/index.js#L8-L10) package.
+A sample implementation can be found in the [Octo-Linker-Core](https://github.com/octo-linker/core/blob/4a30c6606465e294d1ae1c9ca394ba03368928f7/index.js#L8-L10) package.
 
 ## Install
 
@@ -62,9 +62,9 @@ Copyright (c) 2015 Stefan Buck. Licensed under the MIT license.
 
 [npm-url]: https://npmjs.org/package/github-injection
 [npm-image]: https://badge.fury.io/js/github-injection.svg
-[travis-url]: https://travis-ci.org/github-linker/injection
-[travis-image]: https://travis-ci.org/github-linker/injection.svg?branch=master
-[daviddm-url]: https://david-dm.org/github-linker/injection.svg?theme=shields.io
-[daviddm-image]: https://david-dm.org/github-linker/injection
-[coveralls-url]: https://coveralls.io/r/github-linker/injection
-[coveralls-image]: https://coveralls.io/repos/github-linker/injection/badge.png
+[travis-url]: https://travis-ci.org/octo-linker/injection
+[travis-image]: https://travis-ci.org/octo-linker/injection.svg?branch=master
+[daviddm-url]: https://david-dm.org/octo-linker/injection.svg?theme=shields.io
+[daviddm-image]: https://david-dm.org/octo-linker/injection
+[coveralls-url]: https://coveralls.io/r/octo-linker/injection
+[coveralls-image]: https://coveralls.io/repos/octo-linker/injection/badge.png

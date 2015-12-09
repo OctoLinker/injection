@@ -2,8 +2,8 @@
   "name": "github-injection",
   "description": "",
   "version": "0.1.0",
-  "homepage": "https://github.com/github-linker/injection",
-  "bugs": "https://github.com/github-linker/injection/issues",
+  "homepage": "https://github.com/octo-linker/injection",
+  "bugs": "https://github.com/octo-linker/injection/issues",
   "license": "MIT",
   "main": "index.js",
   "author": {
@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/github-linker/injection"
+    "url": "https://github.com/octo-linker/injection"
   },
   "keywords": [],
   "dependencies": {},
