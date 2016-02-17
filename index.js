@@ -42,7 +42,7 @@ var gitHubInjection = function (global, options, cb) {
 
   options = options || {};
   options.context = options.context || null;
-  options.wait = options.wait || 250;
+  options.wait = typeof options.wait === 'number' ? opts.wait : 250;
 
   cb = debounce(cb, options.wait).bind(options.context);
 
