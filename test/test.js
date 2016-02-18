@@ -33,10 +33,6 @@ describe('GitHub-Injection', function() {
     it('accept a callback argument', function (done) {
       assert.doesNotThrow(injection.bind(null, fakeWindow, done));
     });
-
-    it('accept a options and callback argument', function (done) {
-      assert.doesNotThrow(injection.bind(null, fakeWindow, {}, done));
-    });
   });
 
   describe('markup', function() {
