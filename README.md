@@ -62,9 +62,9 @@ Copyright (c) 2015 Stefan Buck. Licensed under the MIT license.
 
 [npm-url]: https://npmjs.org/package/github-injection
 [npm-image]: https://badge.fury.io/js/github-injection.svg
-[travis-url]: https://travis-ci.org/octo-linker/injection
-[travis-image]: https://travis-ci.org/octo-linker/injection.svg?branch=master
+[travis-url]: https://travis-ci.org/octolinker/injection
+[travis-image]: https://travis-ci.org/OctoLinker/injection.svg?branch=master
 [daviddm-url]: https://david-dm.org/octo-linker/injection.svg?theme=shields.io
 [daviddm-image]: https://david-dm.org/octo-linker/injection
-[coveralls-url]: https://coveralls.io/r/octo-linker/injection
-[coveralls-image]: https://coveralls.io/repos/octo-linker/injection/badge.png
+[coveralls-url]: https://coveralls.io/github/OctoLinker/injection?branch=master
+[coveralls-image]: https://coveralls.io/repos/github/OctoLinker/injection/badge.svg?branch=master
