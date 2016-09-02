@@ -17,7 +17,7 @@ var gitHubInjection = function (global, cb) {
     throw new Error('Callback is not a function');
   }
 
-  var domElement = global.document.getElementById('js-repo-pjax-container');
+  var domElement = global.document.getElementById('js-repo-pjax-container') || global.document.documentElement;
   if (!domElement || !global.MutationObserver) {
     return cb(null);
   }
