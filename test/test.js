@@ -35,7 +35,7 @@ describe('GitHub-Injection', function() {
     });
   });
 
-  describe('markup', function() {
+  describe('markup repo', function() {
 
     this.timeout(4000);
 
@@ -53,6 +53,27 @@ describe('GitHub-Injection', function() {
 
     it('ajax container is present', function() {
       assert.notEqual(this.window.document.getElementById('js-repo-pjax-container'), null);
+    });
+  });
+
+  describe('markup pr', function() {
+
+    this.timeout(4000);
+
+    before(function(done) {
+      this.$ = this.result = null;
+
+      helper('pr_browser.html', '/', function(err, window) {
+        if (err) {
+          return done(err);
+        }
+        this.window = window;
+        done();
+      }.bind(this));
+    });
+
+    it('ajax container is present', function() {
+      assert.notEqual(this.window.document.getElementById('js-pjax-container'), null);
     });
   });
 
