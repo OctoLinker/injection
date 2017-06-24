@@ -9,8 +9,7 @@ var gitHubInjection = function (cb) {
     throw new Error('Callback is not a function');
   }
 
-  var domElement = document.getElementById('js-repo-pjax-container') ||
-    document.getElementById('js-pjax-container');
+  var domElement = document.querySelector('#js-repo-pjax-container, #js-pjax-container');
   if (!domElement || !MutationObserver) {
     return cb(null);
   }
