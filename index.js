@@ -11,13 +11,13 @@ var gitHubInjection = function (cb) {
 
   var domElement = document.querySelector('#js-repo-pjax-container, #js-pjax-container');
   if (!domElement || !MutationObserver) {
-    return cb(null);
+    return cb();
   }
 
   var viewSpy = new MutationObserver(function (mutations) {
     mutations.forEach(function (mutation) {
       if (mutation.type === 'childList' && mutation.addedNodes.length) {
-        cb(null);
+        cb();
       }
     });
   });
@@ -28,7 +28,7 @@ var gitHubInjection = function (cb) {
     characterData: true
   });
 
-  cb(null);
+  cb();
 };
 
 // Export the gitHubInjection function for **Node.js**, with
