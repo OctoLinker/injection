@@ -16,16 +16,14 @@ var gitHubInjection = function (cb) {
 
   var viewSpy = new MutationObserver(function (mutations) {
     mutations.forEach(function (mutation) {
-      if (mutation.type === 'childList' && mutation.addedNodes.length) {
+      if (mutation.addedNodes.length) {
         cb();
       }
     });
   });
 
   viewSpy.observe(domElement, {
-    attributes: true,
-    childList: true,
-    characterData: true
+    childList: true
   });
 
   cb();
