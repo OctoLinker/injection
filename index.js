@@ -1,14 +1,6 @@
 'use strict';
 
-var gitHubInjection = function (global, cb) {
-  if (!global) {
-    throw new Error('Missing argument global');
-  }
-
-  if (!global.document || !global.document.getElementById) {
-    throw new Error('The given argument global is not a valid window object');
-  }
-
+var gitHubInjection = function (cb) {
   if (!cb) {
     throw new Error('Missing argument callback');
   }
@@ -17,13 +9,13 @@ var gitHubInjection = function (global, cb) {
     throw new Error('Callback is not a function');
   }
 
-  var domElement = global.document.getElementById('js-repo-pjax-container') ||
-    global.document.getElementById('js-pjax-container');
-  if (!domElement || !global.MutationObserver) {
+  var domElement = document.getElementById('js-repo-pjax-container') ||
+    document.getElementById('js-pjax-container');
+  if (!domElement || !MutationObserver) {
     return cb(null);
   }
 
-  var viewSpy = new global.MutationObserver(function (mutations) {
+  var viewSpy = new MutationObserver(function (mutations) {
     mutations.forEach(function (mutation) {
       if (mutation.addedNodes.length) {
         cb(null);
