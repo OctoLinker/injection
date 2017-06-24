@@ -25,16 +25,14 @@ var gitHubInjection = function (global, cb) {
 
   var viewSpy = new global.MutationObserver(function (mutations) {
     mutations.forEach(function (mutation) {
-      if (mutation.type === 'childList' && mutation.addedNodes.length) {
+      if (mutation.addedNodes.length) {
         cb(null);
       }
     });
   });
 
   viewSpy.observe(domElement, {
-    attributes: true,
-    childList: true,
-    characterData: true
+    childList: true
   });
 
   cb(null);
