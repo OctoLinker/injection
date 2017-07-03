@@ -10,7 +10,7 @@ var gitHubInjection = function (cb) {
   }
 
   var domElement = document.querySelector('#js-repo-pjax-container, #js-pjax-container');
-  if (!domElement || !MutationObserver) {
+  if (!domElement || typeof MutationObserver === 'undefined') {
     return cb();
   }
 

@@ -1,12 +1,18 @@
 'use strict';
 
 var assert = require('assert');
+var jsdom = require('jsdom').jsdom;
 var helper = require('./helper');
 var injection = require('..');
 
 describe('GitHub-Injection', function() {
 
   describe('constructor', function() {
+
+    before(function() {
+      global.document = jsdom();
+      global.window = document.defaultView;
+    });
 
     it('require a callback argument', function () {
       assert.throws(injection, 'Missing argument callback');
