@@ -12,6 +12,8 @@
   "eqnull": true,
   "node": true,
   "globals": {
+    "document"   : false,
+    "MutationObserver" : false,
     "describe"   : false,
     "it"         : false,
     "before"     : false,
