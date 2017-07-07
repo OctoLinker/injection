@@ -5,13 +5,27 @@ const {JSDOM} = require('jsdom');
 const helper = require('./helper');
 const injection = require('..');
 
+
+function MutationObserverMock(cb) {
+  return {
+    observe() {
+      setTimeout(() => {
+        cb({
+          addedNodes: [{}]
+        })
+      }, 100);
+    }
+  };
+}
+
 describe('GitHub-Injection', () => {
 
   describe('constructor', () => {
 
     before(() => {
-      global.window = new JSDOM().window;
-      global.document = window;
+      global.window = helper();
+      global.document = window.document;
+      global.MutationObserver = MutationObserverMock;
     });
 
     it('require a callback argument', () => {

@@ -22,9 +22,11 @@ module.exports = (file, url) => {
     console.log('    remote tests');
   } else {
     console.log('    local tests');
-    filePath = util.format('./fixtures/%s', file);
-    filePath = path.resolve(__dirname, filePath);
-    content = fs.readFileSync(filePath, 'utf-8');
+    if (file) {
+      filePath = util.format('./fixtures/%s', file);
+      filePath = path.resolve(__dirname, filePath);
+      content = fs.readFileSync(filePath, 'utf-8');
+    }
   }
 
   const {window} = new JSDOM(content, {url});
