@@ -1,12 +1,14 @@
 'use strict';
 
-var util = require('util');
-var fs = require('fs');
-var path = require('path');
-var env = require('jsdom').env;
+const util = require('util');
+const fs = require('fs');
+const path = require('path');
+const {env} = require('jsdom');
 
-module.exports = function(file, url, done) {
-  var content, baseUrl, filePath;
+module.exports = (file, url, done) => {
+  let content;
+  let baseUrl;
+  let filePath;
   baseUrl = 'https://github.com/octo-linker/injection/';
 
   if (typeof url === 'function') {
@@ -26,7 +28,7 @@ module.exports = function(file, url, done) {
     content = fs.readFileSync(filePath, 'utf-8');
   }
 
-  env(content, function(err, window) {
+  env(content, (err, window) => {
     if (err) {
       return done(err);
     }
