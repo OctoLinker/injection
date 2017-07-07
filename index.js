@@ -1,6 +1,6 @@
 'use strict';
 
-var gitHubInjection = function (cb) {
+const gitHubInjection = cb => {
   if (!cb) {
     throw new Error('Missing argument callback');
   }
@@ -9,13 +9,13 @@ var gitHubInjection = function (cb) {
     throw new Error('Callback is not a function');
   }
 
-  var domElement = document.querySelector('#js-repo-pjax-container, #js-pjax-container');
+  const domElement = document.querySelector('#js-repo-pjax-container, #js-pjax-container');
   if (!domElement || typeof MutationObserver === 'undefined') {
     return cb();
   }
 
-  var viewSpy = new MutationObserver(function (mutations) {
-    mutations.forEach(function (mutation) {
+  const viewSpy = new MutationObserver(mutations => {
+    mutations.forEach(mutation => {
       if (mutation.addedNodes.length) {
         cb();
       }
