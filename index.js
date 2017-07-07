@@ -29,16 +29,8 @@ const gitHubInjection = cb => {
   cb();
 };
 
-// Export the gitHubInjection function for **Node.js**, with
-// backwards-compatibility for the old `require()` API. If we're in
-// the browser, add `gitHubInjection` as a global object.
+// Export the gitHubInjection function for **Node.js**
+// Otherwise leave it as a global
 if (typeof exports !== 'undefined') {
-  if (typeof module !== 'undefined' && module.exports) {
-    exports = module.exports = gitHubInjection;
-  }
   exports.gitHubInjection = gitHubInjection;
-} else {
-  /*jshint -W040 */
-  this.gitHubInjection = gitHubInjection;
-  /*jshint +W040 */
 }
