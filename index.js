@@ -10,7 +10,7 @@ const gitHubInjection = cb => {
   }
 
   const domElement = document.querySelector('#js-repo-pjax-container, #js-pjax-container');
-  if (!domElement || typeof MutationObserver === 'undefined') {
+  if (!domElement) {
     return cb();
   }
 
