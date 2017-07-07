@@ -1,7 +1,7 @@
 'use strict';
 
 const assert = require('assert');
-const {jsdom} = require('jsdom');
+const {JSDOM} = require('jsdom');
 const helper = require('./helper');
 const injection = require('..');
 
@@ -10,8 +10,8 @@ describe('GitHub-Injection', () => {
   describe('constructor', () => {
 
     before(() => {
-      global.document = jsdom();
-      global.window = document.defaultView;
+      global.window = new JSDOM().window;
+      global.document = window;
     });
 
     it('require a callback argument', () => {
@@ -31,16 +31,9 @@ describe('GitHub-Injection', () => {
 
     this.timeout(4000);
 
-    before(function(done) {
+    before(function() {
       this.$ = this.result = null;
-
-      helper('repo_browser.html', '/', (err, window) => {
-        if (err) {
-          return done(err);
-        }
-        this.window = window;
-        done();
-      });
+      this.window = helper('repo_browser.html', '/');
     });
 
     it('ajax container is present', function() {
@@ -52,16 +45,9 @@ describe('GitHub-Injection', () => {
 
     this.timeout(4000);
 
-    before(function(done) {
+    before(function() {
       this.$ = this.result = null;
-
-      helper('pr_browser.html', '/', (err, window) => {
-        if (err) {
-          return done(err);
-        }
-        this.window = window;
-        done();
-      });
+      this.window = helper('pr_browser.html', '/');
     });
 
     it('ajax container is present', function() {

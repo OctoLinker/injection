@@ -20,16 +20,18 @@
   "devDependencies": {
     "coveralls": "^2.11.1",
     "gulp": "^3.8.8",
-    "gulp-bump": "^0.1.11",
-    "gulp-istanbul": "^0.3.0",
-    "gulp-jscs": "^1.1.2",
-    "gulp-jshint": "^1.8.4",
-    "gulp-load-plugins": "^0.6.0",
-    "gulp-mocha": "^1.1.0",
-    "gulp-plumber": "^0.6.5",
+    "gulp-bump": "^2.7.0",
+    "gulp-istanbul": "^1.1.2",
+    "gulp-jscs": "^4.0.0",
+    "gulp-jshint": "^2.0.4",
+    "gulp-load-plugins": "^1.5.0",
+    "gulp-mocha": "^4.3.1",
+    "gulp-plumber": "^1.1.0",
     "gulp-util": "^3.0.1",
-    "jsdom": "^6.3.0",
-    "jshint-stylish": "^0.4.0"
+    "jsdom": "^11.1.0",
+    "jshint": "^2.9.5",
+    "jshint-stylish": "^2.2.1",
+    "webcomponentsjs": "^1.0.2"
   },
   "scripts": {
     "test": "npm run test-local && npm run test-remote && cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",

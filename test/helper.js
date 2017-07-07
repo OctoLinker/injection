@@ -3,16 +3,15 @@
 const util = require('util');
 const fs = require('fs');
 const path = require('path');
-const {env} = require('jsdom');
+const {JSDOM} = require('jsdom');
 
-module.exports = (file, url, done) => {
+module.exports = (file, url) => {
   let content;
   let baseUrl;
   let filePath;
   baseUrl = 'https://github.com/octo-linker/injection/';
 
-  if (typeof url === 'function') {
-    done = url;
+  if (typeof url === 'undefined') {
     url = 'blob/master/test/fixtures/' + file;
   }
 
@@ -28,19 +27,6 @@ module.exports = (file, url, done) => {
     content = fs.readFileSync(filePath, 'utf-8');
   }
 
-  env(content, (err, window) => {
-    if (err) {
-      return done(err);
-    }
-
-    if (process.env.TEST_ENV !== 'remote') {
-      window.document.location.href = url;
-    }
-
-    if (process.env.TEST_ENV !== 'remote') {
-      window.document.location.href = url;
-    }
-
-    done(null, window);
-  });
+  const {window} = new JSDOM(content, {url});
+  return window;
 };
