@@ -1,6 +1,6 @@
 'use strict';
 
-var gitHubInjection = function (cb) {
+const gitHubInjection = cb => {
   if (!cb) {
     throw new Error('Missing argument callback');
   }
@@ -9,13 +9,13 @@ var gitHubInjection = function (cb) {
     throw new Error('Callback is not a function');
   }
 
-  var domElement = document.querySelector('#js-repo-pjax-container, #js-pjax-container');
-  if (!domElement || typeof MutationObserver === 'undefined') {
+  const domElement = document.querySelector('#js-repo-pjax-container, #js-pjax-container');
+  if (!domElement) {
     return cb();
   }
 
-  var viewSpy = new MutationObserver(function (mutations) {
-    mutations.forEach(function (mutation) {
+  const viewSpy = new MutationObserver(mutations => {
+    mutations.forEach(mutation => {
       if (mutation.addedNodes.length) {
         cb();
       }
@@ -29,16 +29,8 @@ var gitHubInjection = function (cb) {
   cb();
 };
 
-// Export the gitHubInjection function for **Node.js**, with
-// backwards-compatibility for the old `require()` API. If we're in
-// the browser, add `gitHubInjection` as a global object.
+// Export the gitHubInjection function for **Node.js**
+// Otherwise leave it as a global
 if (typeof exports !== 'undefined') {
-  if (typeof module !== 'undefined' && module.exports) {
-    exports = module.exports = gitHubInjection;
-  }
   exports.gitHubInjection = gitHubInjection;
-} else {
-  /*jshint -W040 */
-  this.gitHubInjection = gitHubInjection;
-  /*jshint +W040 */
 }

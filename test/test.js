@@ -1,29 +1,43 @@
 'use strict';
 
-var assert = require('assert');
-var jsdom = require('jsdom').jsdom;
-var helper = require('./helper');
-var injection = require('..');
+const assert = require('assert');
+const {JSDOM} = require('jsdom');
+const helper = require('./helper');
+const injection = require('..');
 
-describe('GitHub-Injection', function() {
 
-  describe('constructor', function() {
+function MutationObserverMock(cb) {
+  return {
+    observe() {
+      setTimeout(() => {
+        cb({
+          addedNodes: [{}]
+        })
+      }, 100);
+    }
+  };
+}
 
-    before(function() {
-      global.document = jsdom();
-      global.window = document.defaultView;
+describe('GitHub-Injection', () => {
+
+  describe('constructor', () => {
+
+    before(() => {
+      global.window = helper();
+      global.document = window.document;
+      global.MutationObserver = MutationObserverMock;
     });
 
-    it('require a callback argument', function () {
-      assert.throws(injection, 'Missing argument callback');
+    it('require a callback argument', () => {
+      assert.throws(() => injection(), 'Missing argument callback');
     });
 
-    it('callback is not a function', function () {
-      assert.throws(injection.bind(null, {}, {}), 'Callback is not a function');
+    it('callback is not a function', () => {
+      assert.throws(() => injection({}), 'Callback is not a function');
     });
 
-    it('accept a callback argument', function (done) {
-      assert.doesNotThrow(injection.bind(null, done));
+    it('accept a callback argument', done => {
+      assert.doesNotThrow(() => injection(done));
     });
   });
 
@@ -31,16 +45,9 @@ describe('GitHub-Injection', function() {
 
     this.timeout(4000);
 
-    before(function(done) {
+    before(function() {
       this.$ = this.result = null;
-
-      helper('repo_browser.html', '/', function(err, window) {
-        if (err) {
-          return done(err);
-        }
-        this.window = window;
-        done();
-      }.bind(this));
+      this.window = helper('repo_browser.html', '/');
     });
 
     it('ajax container is present', function() {
@@ -52,16 +59,9 @@ describe('GitHub-Injection', function() {
 
     this.timeout(4000);
 
-    before(function(done) {
+    before(function() {
       this.$ = this.result = null;
-
-      helper('pr_browser.html', '/', function(err, window) {
-        if (err) {
-          return done(err);
-        }
-        this.window = window;
-        done();
-      }.bind(this));
+      this.window = helper('pr_browser.html', '/');
     });
 
     it('ajax container is present', function() {

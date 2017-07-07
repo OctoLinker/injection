@@ -1,16 +1,17 @@
 'use strict';
 
-var util = require('util');
-var fs = require('fs');
-var path = require('path');
-var env = require('jsdom').env;
+const util = require('util');
+const fs = require('fs');
+const path = require('path');
+const {JSDOM} = require('jsdom');
 
-module.exports = function(file, url, done) {
-  var content, baseUrl, filePath;
+module.exports = (file, url) => {
+  let content;
+  let baseUrl;
+  let filePath;
   baseUrl = 'https://github.com/octo-linker/injection/';
 
-  if (typeof url === 'function') {
-    done = url;
+  if (typeof url === 'undefined') {
     url = 'blob/master/test/fixtures/' + file;
   }
 
@@ -21,24 +22,13 @@ module.exports = function(file, url, done) {
     console.log('    remote tests');
   } else {
     console.log('    local tests');
-    filePath = util.format('./fixtures/%s', file);
-    filePath = path.resolve(__dirname, filePath);
-    content = fs.readFileSync(filePath, 'utf-8');
+    if (file) {
+      filePath = util.format('./fixtures/%s', file);
+      filePath = path.resolve(__dirname, filePath);
+      content = fs.readFileSync(filePath, 'utf-8');
+    }
   }
 
-  env(content, function(err, window) {
-    if (err) {
-      return done(err);
-    }
-
-    if (process.env.TEST_ENV !== 'remote') {
-      window.document.location.href = url;
-    }
-
-    if (process.env.TEST_ENV !== 'remote') {
-      window.document.location.href = url;
-    }
-
-    done(null, window);
-  });
+  const {window} = new JSDOM(content, {url});
+  return window;
 };
