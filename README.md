@@ -27,12 +27,9 @@ $ npm install --save github-injection
 
 ### Browser
 ```js
-gitHubInjection(window, function(err) {
-  if (err) {
-    return console.error(err);
-  }
-  var el = window.document.getElementsByClassName('header')[0];
-  var randomColor = '#' + ((1<<24) * Math.random()|0).toString(16);
+gitHubInjection(() => {
+  const el = window.document.getElementsByClassName('header')[0];
+  const randomColor = '#' + ((1<<24) * Math.random()|0).toString(16);
   el.style.backgroundColor = randomColor;
 });
 
@@ -40,14 +37,11 @@ gitHubInjection(window, function(err) {
 
 ### Node (Browserify)
 ```js
-var gitHubInjection = require('github-injection');
+const gitHubInjection = require('github-injection');
 
-gitHubInjection(window, function(err) {
-  if (err) {
-    throw err;
-  }
-  var el = window.document.getElementsByClassName('header')[0];
-  var randomColor = '#' + ((1<<24) * Math.random()|0).toString(16);
+gitHubInjection(() => {
+  const el = window.document.getElementsByClassName('header')[0];
+  const randomColor = '#' + ((1<<24) * Math.random()|0).toString(16);
   el.style.backgroundColor = randomColor;
 });
 
