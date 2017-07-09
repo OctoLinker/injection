@@ -1,5 +1,5 @@
 # injection
-[![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-url]][daviddm-image] [![Coverage Status][coveralls-image]][coveralls-url]
+[![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-url]][daviddm-image]
 
 > Tiny script which helps you to build better browser extensions for GitHub.com
 
@@ -64,7 +64,3 @@ Copyright (c) 2015 Stefan Buck. Licensed under the MIT license.
 [npm-image]: https://badge.fury.io/js/github-injection.svg
 [travis-url]: https://travis-ci.org/octolinker/injection
 [travis-image]: https://travis-ci.org/OctoLinker/injection.svg?branch=master
-[daviddm-url]: https://david-dm.org/octo-linker/injection.svg?theme=shields.io
-[daviddm-image]: https://david-dm.org/octo-linker/injection
-[coveralls-url]: https://coveralls.io/github/OctoLinker/injection?branch=master
-[coveralls-image]: https://coveralls.io/repos/github/OctoLinker/injection/badge.svg?branch=master
