@@ -5,4 +5,6 @@ addons:
   chrome: stable
 dist: trusty
 addons:
-  chrome: beta
+  chrome: stable
+before_script:
+  - export CHROME_BIN=chromium-browser
