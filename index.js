@@ -6,15 +6,15 @@ const gitHubInjection = cb => {
   }
 
   if (typeof cb !== 'function') {
-    throw new Error('Callback is not a function');
+    throw new TypeError('Callback is not a function');
   }
 
   document.addEventListener('pjax:end', cb);
   cb();
-}
+};
 
 // Export the gitHubInjection function for **Node.js**
 // Otherwise leave it as a global
- if (typeof exports !== 'undefined') {
-   exports.gitHubInjection = gitHubInjection;
- }
+if (typeof exports !== 'undefined') {
+  exports.gitHubInjection = gitHubInjection;
+}
