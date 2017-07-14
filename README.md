@@ -1,5 +1,5 @@
 # injection
-[![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-url]][daviddm-image] [![Coverage Status][coveralls-image]][coveralls-url]
+[![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-url]][daviddm-image]
 
 > Tiny script which helps you to build better browser extensions for GitHub.com
 
@@ -27,12 +27,9 @@ $ npm install --save github-injection
 
 ### Browser
 ```js
-gitHubInjection(window, function(err) {
-  if (err) {
-    return console.error(err);
-  }
-  var el = window.document.getElementsByClassName('header')[0];
-  var randomColor = '#' + ((1<<24) * Math.random()|0).toString(16);
+gitHubInjection(() => {
+  const el = window.document.getElementsByClassName('header')[0];
+  const randomColor = '#' + ((1<<24) * Math.random()|0).toString(16);
   el.style.backgroundColor = randomColor;
 });
 
@@ -40,14 +37,11 @@ gitHubInjection(window, function(err) {
 
 ### Node (Browserify)
 ```js
-var gitHubInjection = require('github-injection');
+const gitHubInjection = require('github-injection');
 
-gitHubInjection(window, function(err) {
-  if (err) {
-    throw err;
-  }
-  var el = window.document.getElementsByClassName('header')[0];
-  var randomColor = '#' + ((1<<24) * Math.random()|0).toString(16);
+gitHubInjection(() => {
+  const el = window.document.getElementsByClassName('header')[0];
+  const randomColor = '#' + ((1<<24) * Math.random()|0).toString(16);
   el.style.backgroundColor = randomColor;
 });
 
@@ -64,7 +58,3 @@ Copyright (c) 2015 Stefan Buck. Licensed under the MIT license.
 [npm-image]: https://badge.fury.io/js/github-injection.svg
 [travis-url]: https://travis-ci.org/octolinker/injection
 [travis-image]: https://travis-ci.org/OctoLinker/injection.svg?branch=master
-[daviddm-url]: https://david-dm.org/octo-linker/injection.svg?theme=shields.io
-[daviddm-image]: https://david-dm.org/octo-linker/injection
-[coveralls-url]: https://coveralls.io/github/OctoLinker/injection?branch=master
-[coveralls-image]: https://coveralls.io/repos/github/OctoLinker/injection/badge.svg?branch=master
