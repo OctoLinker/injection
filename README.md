@@ -1,5 +1,5 @@
 # injection
-[![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-url]][daviddm-image]
+[![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url]
 
 > Tiny script which helps you to build better browser extensions for GitHub.com
 
@@ -35,7 +35,7 @@ gitHubInjection(() => {
 
 ```
 
-### Node (Browserify)
+### Node
 ```js
 const gitHubInjection = require('github-injection');
 
