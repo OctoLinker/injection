@@ -1,7 +1,7 @@
 {
   "name": "github-injection",
   "description": "Tiny script which helps you to build better browser extensions for GitHub.com",
-  "version": "0.3.0",
+  "version": "1.0.0",
   "homepage": "https://github.com/OctoLinker/injection",
   "bugs": "https://github.com/OctoLinker/injection/issues",
   "license": "MIT",
@@ -31,7 +31,13 @@
   },
   "xo": {
     "space": true,
-    "globals": ["assert", "gitHubInjection"],
-    "env": ["browser", "mocha"]
+    "globals": [
+      "assert",
+      "gitHubInjection"
+    ],
+    "env": [
+      "browser",
+      "mocha"
+    ]
   }
 }
