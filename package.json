@@ -1,7 +1,7 @@
 {
   "name": "github-injection",
   "description": "Tiny script which helps you to build better browser extensions for GitHub.com",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "homepage": "https://github.com/OctoLinker/injection",
   "bugs": "https://github.com/OctoLinker/injection/issues",
   "license": "MIT",
