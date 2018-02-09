@@ -23,8 +23,8 @@ describe('gitHubInjection', () => {
       if (count === 2) {
         done();
       }
-
-      document.dispatchEvent(new Event('pjax:end'));
     });
+
+    document.dispatchEvent(new Event('pjax:end'));
   });
 });
