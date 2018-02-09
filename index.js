@@ -16,5 +16,6 @@ const gitHubInjection = cb => {
 // Export the gitHubInjection function for **Node.js**
 // Otherwise leave it as a global
 if (typeof exports !== 'undefined') {
-  exports = module.exports = gitHubInjection;
+  module.exports = gitHubInjection;
+  exports = module.exports;
 }
