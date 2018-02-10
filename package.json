@@ -27,13 +27,8 @@
   },
   "xo": {
     "space": true,
-    "globals": [
-      "assert",
-      "gitHubInjection"
-    ],
     "env": [
-      "browser",
-      "mocha"
+      "browser"
     ]
   }
 }
