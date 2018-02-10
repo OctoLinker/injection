@@ -1,11 +1,4 @@
-sudo: required
 language: node_js
 node_js:
   - v6
-addons:
-  chrome: stable
 dist: trusty
-addons:
-  chrome: stable
-before_script:
-  - export CHROME_BIN=chromium-browser

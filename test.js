@@ -1,30 +1,44 @@
-describe('gitHubInjection', () => {
-  it('throws an error if callback function is missing', () => {
-    assert.throws(() => gitHubInjection(), 'Missing argument callback');
+const {JSDOM} = require('jsdom');
+const it = require('tape');
+
+const gitHubInjection = require('./');
+
+const dom = new JSDOM(`<!DOCTYPE html><p>Hello world</p>`);
+global.document = dom.window.document;
+global.Event = dom.window.Event;
+
+it('throws an error if callback function is missing', assert => {
+  assert.throws(() => gitHubInjection(), /Missing argument callback/);
+  assert.end();
+});
+
+it('throws an error if called without a callback function', assert => {
+  assert.throws(() => gitHubInjection({}), /Callback is not a function/);
+  assert.end();
+});
+
+it('accepts a callback function', assert => {
+  assert.doesNotThrow(() => gitHubInjection(() => {}));
+  assert.end();
+});
+
+it('calls callback function on initializtion', assert => {
+  let count = 0;
+  assert.doesNotThrow(() => gitHubInjection(() => count++));
+  assert.equal(count, 1);
+  assert.end();
+});
+
+it('calls callback function when pjax:end event was dispatched', assert => {
+  assert.plan(1);
+  let count = 0;
+
+  gitHubInjection(() => {
+    count++;
+    if (count === 2) {
+      assert.pass();
+    }
   });
 
-  it('throws an error if called without a callback function', () => {
-    assert.throws(() => gitHubInjection({}), 'Callback is not a function');
-  });
-
-  it('accepts a callback function', () => {
-    assert.doesNotThrow(() => gitHubInjection(() => {}));
-  });
-
-  it('calls callback function on initializtion', done => {
-    assert.doesNotThrow(() => gitHubInjection(done));
-  });
-
-  it('calls callback function when pjax:end event was dispatched', done => {
-    let count = 0;
-
-    gitHubInjection(() => {
-      count++;
-      if (count === 2) {
-        done();
-      }
-    });
-
-    document.dispatchEvent(new Event('pjax:end'));
-  });
+  document.dispatchEvent(new Event('pjax:end'));
 });
