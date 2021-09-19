@@ -6,6 +6,7 @@
   "bugs": "https://github.com/OctoLinker/injection/issues",
   "license": "MIT",
   "main": "index.js",
+  "types": "index.d.ts",
   "author": {
     "name": "Stefan Buck",
     "email": "github@stefanbuck.com",
