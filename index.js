@@ -9,7 +9,7 @@ const gitHubInjection = cb => {
     throw new TypeError('Callback is not a function');
   }
 
-  document.addEventListener('turbo:visit', cb);
+  document.addEventListener('turbo:render', cb);
   cb();
 };
 
