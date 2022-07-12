@@ -10,6 +10,7 @@ const gitHubInjection = cb => {
   }
 
   document.addEventListener('pjax:end', cb);
+  document.addEventListener('turbo:render', cb);
   cb();
 };
 
